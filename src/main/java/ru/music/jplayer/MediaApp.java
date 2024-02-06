@@ -42,7 +42,7 @@ public class MediaApp extends Application {
                 new PieChart.Data("Other", 30.0));
         chart.setTitle("Programming Language Statistics");
 
-        String location = "http://demo2s.com";
+        String location = "https://music.yandex.ru/home";
         WebView browser = new WebView();
         WebEngine engine = browser.getEngine();
         engine.load(location);
