@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -15,21 +14,17 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class MediaApp extends Application {
-
-    private MediaPlayer mediaPlayer;
 
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage stage) throws MalformedURLException {
+    public void start(Stage stage) {
 
         PieChart chart = new PieChart();
         chart.getData().addAll(
@@ -47,7 +42,7 @@ public class MediaApp extends Application {
         WebEngine engine = browser.getEngine();
         engine.load(location);
 
-        Path path = Paths.get("mama-ya-popuz-yana.mp4");
+        Path path = Paths.get("symphonyNo40.mp3");
         Media media = new Media(path.toUri().toString());
         MediaPlayer player = new MediaPlayer(media);
         player.setAutoPlay(true);
@@ -56,10 +51,10 @@ public class MediaApp extends Application {
         Button pauseButton = new Button("Pause");
         Button stopButton = new Button("Stop");
 
-        playButton.setOnAction(e -> mediaPlayer.play());
-        pauseButton.setOnAction(e -> mediaPlayer.pause());
-        stopButton.setOnAction(e -> mediaPlayer.stop());
-        video.setOnError(ex -> System.out.println(ex));
+        playButton.setOnAction(e -> player.play());
+        pauseButton.setOnAction(e -> player.pause());
+        stopButton.setOnAction(e -> player.stop());
+        video.setOnError(System.out::println);
 
         stage.setWidth(500);
         stage.setHeight(500);
@@ -83,8 +78,6 @@ public class MediaApp extends Application {
         stage3.setY(stage.getY() + stage.getHeight());
         stage3.setScene(new Scene(box));
         stage3.show();
-
-
     }
 
 }
