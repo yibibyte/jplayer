@@ -42,7 +42,7 @@ public class MediaApp extends Application {
         WebEngine engine = browser.getEngine();
         engine.load(location);
 
-        Path path = Paths.get("symphonyNo40.mp3");
+        Path path = Paths.get("mama-ya-popuz-yana.mp4");
         Media media = new Media(path.toUri().toString());
         MediaPlayer player = new MediaPlayer(media);
         player.setAutoPlay(true);
